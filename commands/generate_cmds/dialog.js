@@ -6,6 +6,7 @@ var fs = editor.create(store);
 const path = require('path');
 const jsonFormat = require('json-format');
 const chalk = require('chalk');
+const { checkDialog } = require("../utils/verifications");
 
 exports.command = 'dialog <name> [entities..]'
 exports.aliases = ['d']
@@ -21,18 +22,9 @@ exports.builder = {
 }
 
 exports.handler = function (argv) {
-  console.log(`\t${chalk.green('create')}\tdialog ${argv.name} with entities(${argv.entities.join(' ')}`);
+  console.log(`\t${chalk.green('create')}\tdialog ${argv.name} with entities(${argv.entities.join(' ')})`);
 
-  const name_validation = /^[a-z0-9]+[a-z0-9-]*[a-z0-9]+$/;
-  if (!name_validation.test(argv.name)) {
-    console.log(`${chalk.bgHex('#ac2925')(' ERROR ')} ${chalk.hex('#c9302c')('Dialog name must contain only lowercase letters, numbers, hyphens, without spaces. It cannot begin or end with a hyphen.')}`);
-    // console.log('Label must contain only lowercase letters, numbers, hyphens, without spaces. It cannot begin or end with a hyphen.');
-    return;
-  }
-  if (name_validation.length > 200) {
-    console.log(`${chalk.bgHex('#ac2925')(' ERROR ')} ${chalk.hex('#c9302c')('Dialog name must be no longer than 200 characters.')}`);
-    return;
-  }
+  if (!checkDialog(argv)) return;
 
   namespace = argv.name.toLowerCase();
   let [firstLetter, ...letters] = argv.name;
@@ -58,7 +50,7 @@ exports.handler = function (argv) {
       entity = entity.split(':');
       entitiesJSON[entity[0]] = { dim: entity[1] };
     }
-  }
+  } 
 
   const location = path.join(__dirname, '/templates/dialog.js');
   fs.copyTpl(

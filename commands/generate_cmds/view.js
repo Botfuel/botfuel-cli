@@ -1,6 +1,7 @@
 var memFs = require('mem-fs');
 var editor = require('mem-fs-editor');
 const path = require('path');
+const { checkView } = require('../utils/verifications');
 
 var store = memFs.create();
 var fs = editor.create(store);
@@ -12,15 +13,8 @@ exports.desc = 'Generate view <name>'
 exports.builder = {}
 exports.handler = function (argv) {
   console.log(`\t${chalk.green('create')}\tview ${argv.name}`);
-  const name_validation = /^[a-z0-9]+[a-z0-9-]*[a-z0-9]+$/;
-  if (!name_validation.test(argv.name)) {
-    console.log(`${chalk.bgHex('#ac2925')(' ERROR ')} ${chalk.hex('#c9302c')('View name must contain only lowercase letters, numbers, hyphens, without spaces. It cannot begin or end with a hyphen.')}`);
-    return;
-  }
-  if (name_validation.length > 200) {
-    console.log(`${chalk.bgHex('#ac2925')(' ERROR ')} ${chalk.hex('#c9302c')('View name must be no longer than 200 characters.')}`);
-    return;
-  }
+  
+  if (!checkView(argv)) return;
 
   const [firstLetter, ...letters] = argv.name;
   const viewName = `${firstLetter.toUpperCase()}${letters.join('')}`;
