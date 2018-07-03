@@ -1,7 +1,7 @@
 var memFs = require('mem-fs');
 var editor = require('mem-fs-editor');
 const path = require('path');
-const { checkView } = require('../utils/verifications');
+const { checkIntentName } = require('../utils/verifications');
 
 var store = memFs.create();
 var fs = editor.create(store);
@@ -14,7 +14,7 @@ exports.builder = {}
 exports.handler = function (argv) {
   console.log(`\t${chalk.green('create')}\tview ${argv.name}`);
   
-  if (!checkView(argv)) return;
+  if (!checkIntentName(argv, 'View')) return;
 
   const [firstLetter, ...letters] = argv.name;
   const viewName = `${firstLetter.toUpperCase()}${letters.join('')}`;

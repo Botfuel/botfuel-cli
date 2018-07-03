@@ -6,7 +6,7 @@ var fs = editor.create(store);
 const path = require('path');
 const jsonFormat = require('json-format');
 const chalk = require('chalk');
-const { checkDialog } = require("../utils/verifications");
+const { checkIntentName } = require("../utils/verifications");
 
 exports.command = 'dialog <name> [entities..]'
 exports.aliases = ['d']
@@ -24,7 +24,7 @@ exports.builder = {
 exports.handler = function (argv) {
   console.log(`\t${chalk.green('create')}\tdialog ${argv.name} with entities(${argv.entities.join(' ')})`);
 
-  if (!checkDialog(argv)) return;
+  if (!checkIntentName(argv, 'Dialog')) return;
 
   namespace = argv.name.toLowerCase();
   let [firstLetter, ...letters] = argv.name;
