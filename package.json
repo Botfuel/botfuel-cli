@@ -1,0 +1,25 @@
+{
+  "name": "fuel",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "fuel": "./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "json-format": "^1.0.1",
+    "mem-fs": "^1.1.3",
+    "mem-fs-editor": "^4.0.2",
+    "nodegit": "^0.22.1",
+    "path": "^0.12.7",
+    "shelljs": "^0.8.2",
+    "yargs": "^11.0.0"
+  }
+}
