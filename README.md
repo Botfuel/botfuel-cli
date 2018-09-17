@@ -41,11 +41,24 @@ Options:
              confirmation)            [default: "default"]
 ```
 
-## Example
+### Example
 
 ```shell
 fuel generate dialog travel destination:city pilot:forename --type=prompt
 ```
+
+
+## Generate Intents
+
+The intent generation with :
+ - generate the dialog file
+ - generate the view file
+ - call the botfuel API to create the intent in the trainer
+
+```shell
+fuel generate intent <name>
+```
+
 
 ## Generate Config
 
@@ -67,3 +80,22 @@ Options:
 ```shell
 fuel g c botfuel --adapter=botfuel --brain=mongo --locale=en --logger=info --modules="foo bar"
 ```
+
+## Run bot
+
+```shell
+fuel serve <config>
+```
+
+### Example
+```shell
+fuel generate config webchat --adapter=botfuel --loger=debug
+fuel serve webchat
+```
+
+## Run tests
+
+```shell
+fuel test
+```
+
