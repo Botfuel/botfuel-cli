@@ -10,4 +10,3 @@ class <%= dialogName %>Dialog extends <%= promptType %>Dialog {}
 };
 
 module.exports = <%= dialogName %>Dialog;
-
