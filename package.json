@@ -1,15 +1,26 @@
 {
-  "name": "fuel",
+  "name": "botfuel-cli",
   "version": "0.1.0",
-  "description": "",
+  "description": "Command Line Interface for Botfuel-dialog",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "bin": {
     "fuel": "./index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "Botfuel",
+    "Botfuel CLI",
+    "fuel",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Botfuel/botfuel-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Botfuel/botfuel-cli/issues"
+  },
+  "homepage": "https://github.com/Botfuel/botfuel-cli",
   "author": "",
   "license": "MIT",
   "dependencies": {
