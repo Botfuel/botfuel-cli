@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Botfuel/botfuel-cli",
   "author": "",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "chalk": "^2.4.1",
     "enquirer": "^1.0.3",
